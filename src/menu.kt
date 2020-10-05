@@ -25,23 +25,12 @@ fun main(){
     }
 
     val recetas = object {
-        val mexicanas: List<String> = listOf<String>("Aguachile", "Tacos de asada", "Guacamole")
-        val japonesas: List<String> = listOf<String>("Curry", "Setas teriyaki", "Ramen")
+        val mexicanas: Array<String> = arrayOf<String>("Aguachile", "Tacos de asada", "Guacamole")
+        val japonesas: Array<String> = arrayOf<String>("Curry", "Setas teriyaki", "Ramen")
+        val colombianas: Array<String> = arrayOf<String>("Arepas", "Bandeja paisa", "Aguapanela con queso")
+        val argentinas: Array<String> = arrayOf<String>("chocotorta", "Torta matera", "Medialunas")
+        var delMundo = mexicanas.plus(japonesas).plus(colombianas).plus(argentinas)
     }
-
-    /*if (response?.toLowerCase().equals(opciones.hacerReceta)) {
-        println("Elegir ingredientes")
-    }
-
-    if (response?.toLowerCase().equals(opciones.verRecetas)) {
-        for (receta in recetas.mexicanas.plus(recetas.japonesas)) {
-            println(receta)
-        }
-    }
-
-    if (response?.toLowerCase().equals(opciones.salir)) {
-        println("Elegir ingredientes")
-    }*/
 
     do {
         val instrucciones = """
@@ -57,13 +46,13 @@ fun main(){
 
         when(response?.toLowerCase()) {
             opciones.hacerReceta -> elegirIngredientes()
-            opciones.verRecetas ->  for (receta in recetas.mexicanas.plus(recetas.japonesas)) {
+            opciones.verRecetas ->  for (receta in recetas.delMundo) {
                 println(receta)
             }
             opciones.salir -> println("Saliendo")
 
             opciones.opcion1 -> elegirIngredientes()
-            opciones.opcion2 ->  for (receta in recetas.mexicanas.plus(recetas.japonesas)) {
+            opciones.opcion2 ->  for (receta in recetas.delMundo) {
                 println(receta)
             }
             opciones.opcion3 -> println("Saliendo")
@@ -71,6 +60,5 @@ fun main(){
             else -> println("No entendí que quizo decir")
         }
     } while (!response.equals("3"))
-
 }
 
